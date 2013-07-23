@@ -5,6 +5,6 @@
   "description": "An example cantina web application.",
   "license": "BSD",
   "dependencies": {
-    "cantina": "git+ssh://git@github.com:cantina/cantina.git#3.x"
+    "buffet": "~0.6.0"
   }
 }
