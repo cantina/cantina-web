@@ -1,0 +1,10 @@
+{
+  "name": "cantina-web-example",
+  "version": "0.0.0",
+  "private": true,
+  "description": "An example cantina web application.",
+  "license": "BSD",
+  "dependencies": {
+    "cantina": "git+ssh://git@github.com:cantina/cantina.git#3.x"
+  }
+}

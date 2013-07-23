@@ -3,6 +3,7 @@ Cantina: Web
 
 A stack of cantina plugins that sets up a ready-to-go web application.
 
+*Cantina Version:* **3.x**
 
 - - -
 
