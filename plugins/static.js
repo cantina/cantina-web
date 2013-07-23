@@ -3,9 +3,6 @@ var app = require('cantina')
   , conf
   , middleware;
 
-// Depends on middleware plugin.
-require('./middleware');
-
 // Require and expose buffet.
 app.buffet = require('buffet');
 
@@ -26,15 +23,3 @@ app.conf.add({
     }
   }
 });
-
-// Get static config.
-conf = app.conf.get('web:static');
-
-// Applications can set `static: false` to disable.
-if (conf) {
-  middleware = app.buffet(path.resolve(app.root, conf.root), conf.buffet);
-  app.middleware.add(-1000, middleware);
-  if (conf.notFound) {
-    app.middleware.add(1000, middleware.notFound);
-  }
-}
