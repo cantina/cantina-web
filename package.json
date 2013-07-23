@@ -1,0 +1,26 @@
+{
+  "name": "cantina-web",
+  "version": "3.0.0",
+  "description": "A stack of cantina plugins that sets up a ready-to-go web application.",
+  "main": "cantina-web.js",
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cantina/cantina-web.git"
+  },
+  "homepage": "https://github.com/cantina/cantina-web",
+  "keywords": [
+    "cantina"
+  ],
+  "author": "Brian Link <cpsubrian@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cantina/cantina-web/issues"
+  }
+}
