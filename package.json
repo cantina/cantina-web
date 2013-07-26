@@ -6,7 +6,7 @@
   "dependencies": {
     "buffet": "~0.6.0",
     "middler": "~0.7.1",
-    "expres": "~0.0.5",
+    "expres": "0.0.5",
     "templ": "~0.1.5"
   },
   "devDependencies": {
