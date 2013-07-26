@@ -18,8 +18,7 @@ conf = app.conf.get('web:controllers');
 if (conf) {
   app.controller = app.middler;
   app.controllers = app.load(conf.path);
-
   app.controllers.forEach(function (controller) {
-    app.middleware.last(controller.handler);
+    app.middleware.add(900, controller.handler);
   });
 }
