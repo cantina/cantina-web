@@ -10,7 +10,8 @@
   },
   "devDependencies": {
     "mocha": "*",
-    "cantina": "git+ssh://git@github.com:cantina/cantina.git#3.x"
+    "cantina": "git+ssh://git@github.com:cantina/cantina.git#3.x",
+    "request": "~2.25.0"
   },
   "scripts": {
     "test": "make test"
