@@ -7,7 +7,11 @@
     "buffet": "~0.6.0",
     "middler": "~0.7.1",
     "expres": "0.0.5",
-    "templ": "~0.1.5"
+    "templ": "~0.1.5",
+    "pause": "0.0.1",
+    "href": "~0.1.1",
+    "formidable": "~1.0.14",
+    "qs": "~0.6.5"
   },
   "devDependencies": {
     "mocha": "*",
