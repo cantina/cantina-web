@@ -10,6 +10,11 @@ app.middler = require('middler');
 // Add middleware api to app.
 app.middleware = app.middler(app.server);
 
-// Load web middleware and app middleware.
-app.load('middleware', path.resolve(__dirname, '../'));
-app.load('middleware');
+// Load middleware from a folder and add it.
+app.loadMiddleware = function (dir, cwd) {
+  app.load(dir, cwd).forEach(function (middleware) {
+    if (middleware) {
+      app.middleware.add(middleware.weight || 0, middleware.handler || middleware);
+    }
+  });
+};
