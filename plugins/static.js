@@ -2,9 +2,6 @@ var app = require('cantina')
   , path = require('path')
   , conf;
 
-// Depends on middleware plugin.
-require('./middleware');
-
 // Require and expose buffet.
 app.buffet = require('buffet');
 
@@ -13,7 +10,7 @@ app.conf.add({
   web: {
     static: {
       root: './public',
-      notFound: true,
+      notFound: false,
       buffet: {
         indexes: true,
         index: 'index.html',
