@@ -32,6 +32,7 @@ var app = require('cantina');
 
 app.boot(function (err) {
   // Handle err.
+  if (err) throw err;
 
   // Load cantina-web.
   require('cantina-web');
