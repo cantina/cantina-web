@@ -5,6 +5,42 @@ A stack of cantina plugins that sets up a ready-to-go web application.
 
 *Cantina Version:* **3.x**
 
+Inspired by [Motley](https://github.com/carlos8f/motley).
+
+Features
+========
+
+- Http Server
+- Middleware Stack ([middler](https://github.com/carlos8f/node-midler))
+- Static File Server ([buffet](https://github.com/carlos8f/node-buffet))
+- Views & Templates ([templ](https://github.com/carlos8f/templ))
+- Useful utilities and middleware including:
+    - Form body parsing
+    - Express compatibility
+    - Controllers pattern
+    - Auto plugin loading
+    - Auto middleware loading
+
+How to Use
+==========
+
+Just include the `cantina-web` plugin in your `cantina` application and you'll
+have a simple, but full web stack at your disposal.
+
+```js
+var app = require('cantina');
+
+app.boot(function (err) {
+  // Handle err.
+
+  // Load cantina-web.
+  require('cantina-web');
+
+  // Start the app.
+  app.start();
+});
+```
+
 - - -
 
 ### Developed by [Terra Eclipse](http://www.terraeclipse.com)
