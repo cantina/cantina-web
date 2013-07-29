@@ -15,7 +15,7 @@ if (!app.server) {
   app.server = http.createServer();
 
   // When the app starts, start listening.
-  app.hooks('start').last(1000, function (next) {
+  app.hook('start').last(1000, function (next) {
     var conf = app.conf.get('web:server');
     if (!app.server.address() && conf.port) {
       app.server.listen(conf.port, function () {
