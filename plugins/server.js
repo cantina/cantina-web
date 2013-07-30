@@ -17,7 +17,7 @@ if (!app.server) {
   // When the app starts, start listening.
   app.hook('start').last(1000, function (next) {
     var conf = app.conf.get('web:server');
-    if (!app.server.address() && (typeof conf.port !== 'undefined')) {
+    if (!app.server.address() && (typeof conf.port !== 'undefined') && (typeof conf.listen === 'undefined' || conf.listen)) {
       app.server.listen(conf.port, function () {
         var address = app.server.address();
         app.log('Listening on ' + address.address + ':' + address.port);
