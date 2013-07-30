@@ -28,4 +28,6 @@ app.conf.add({
 conf = app.conf.get('web:static');
 
 // Create middleware.
-app.staticHandler = app.buffet(path.resolve(app.root, conf.root), conf.buffet);
+if (conf) {
+  app.staticHandler = app.buffet(path.resolve(app.root, conf.root), conf.buffet);
+}

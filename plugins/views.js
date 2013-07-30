@@ -18,4 +18,6 @@ app.conf.add({
 conf = app.conf.get('web:views');
 
 // Expose middleware.
-app.viewsHandler = app.templ(path.resolve(app.root, conf.root));
+if (conf) {
+  app.viewsHandler = app.templ(path.resolve(app.root, conf.root));
+}

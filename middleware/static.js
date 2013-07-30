@@ -4,5 +4,10 @@ var app = require('cantina');
 require('../plugins/static');
 
 // Export middleware.
-module.exports = app.staticHandler;
-module.exports.weight = -1000;
+if (app.staticHandler) {
+  module.exports = app.staticHandler;
+  module.exports.weight = -1000;
+}
+else {
+  module.exports = null;
+}
