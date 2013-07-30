@@ -29,4 +29,9 @@ if (!app.server) {
       next();
     }
   });
+
+  // When the app is being destroyed, close the server.
+  app.hook('destroy').last(1000, function (next) {
+    app.server.close(next);
+  });
 }
