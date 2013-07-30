@@ -1,6 +1,8 @@
 var app = require('cantina')
   , path = require('path')
-  , conf;
+  , fs = require('fs')
+  , conf
+  , root;
 
 // Require and expose buffet.
 app.buffet = require('buffet');
@@ -29,5 +31,8 @@ conf = app.conf.get('web:static');
 
 // Create middleware.
 if (conf) {
-  app.staticHandler = app.buffet(path.resolve(app.root, conf.root), conf.buffet);
+  root = path.resolve(app.root, conf.root);
+  if (fs.existsSync(root)) {
+    app.staticHandler = app.buffet(root, conf.buffet);
+  }
 }

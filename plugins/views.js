@@ -1,6 +1,8 @@
 var app = require('cantina')
   , path = require('path')
-  , conf;
+  , fs = require('fs')
+  , conf
+  , root;
 
 // Expose templ.
 app.templ = require('templ');
@@ -19,5 +21,8 @@ conf = app.conf.get('web:views');
 
 // Expose middleware.
 if (conf) {
-  app.viewsHandler = app.templ(path.resolve(app.root, conf.root));
+  root = path.resolve(app.root, conf.root);
+  if (fs.existsSync(root)) {
+    app.viewsHandler = app.templ(root);
+  }
 }
