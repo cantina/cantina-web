@@ -18,7 +18,8 @@ conf = app.conf.get('web:controllers');
 if (conf) {
   app.controller = app.middler;
   app.controllers = app.load(conf.path);
-  app.controllers.forEach(function (controller) {
-    app.middleware.add(900, controller.handler);
+  Object.keys(app.controllers).forEach(function (name) {
+    var controller = app.controllers[name];
+    app.middleware.add(controller.weight || 900, controller.handler);
   });
 }
