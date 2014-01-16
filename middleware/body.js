@@ -5,6 +5,9 @@ module.exports = function (req, res, next) {
   var form = new formidable.IncomingForm();
   try {
     form.parse(req, function (err, fields, files) {
+      if (err && err.message === 'bad content-type header, no content-type') {
+        err = null;
+      }
       req.body = fields;
       req.files = files;
       next(err);
