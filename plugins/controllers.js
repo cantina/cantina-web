@@ -13,13 +13,17 @@ app.conf.add({
   }
 });
 
-conf = app.conf.get('web:controllers');
-
-if (conf) {
-  app.controller = app.middler;
-  app.controllers = app.load(conf.path);
-  Object.keys(app.controllers).forEach(function (name) {
-    var controller = app.controllers[name];
-    app.middleware.add(controller.weight || 900, controller.handler);
-  });
-}
+app.loadControllers = function (controllersPath) {
+  conf = app.conf.get('web:controllers');
+  if (conf) {
+    controllersPath = controllersPath || conf.path;
+  }
+  if (controllersPath) {
+    app.controller = app.middler;
+    app.controllers = app.load(controllersPath);
+    Object.keys(app.controllers).forEach(function (name) {
+      var controller = app.controllers[name];
+      app.middleware.add(controller.weight || 900, controller.handler);
+    });
+  }
+};

@@ -1,0 +1,10 @@
+{
+  "name": "cantina-web-load-fixture",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A fixture application to test load order.",
+  "license": "BSD",
+  "dependencies": {
+    "buffet": "~0.6.0"
+  }
+}

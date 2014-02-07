@@ -7,3 +7,6 @@ app.load('plugins');
 // Load local and app middleware.
 app.loadMiddleware('middleware', __dirname);
 app.loadMiddleware('middleware');
+
+// Load the app controllers.
+app.loadControllers();
