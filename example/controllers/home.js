@@ -4,3 +4,7 @@ var app = require('cantina')
 controller.get('/', function (req, res, next) {
   res.render('index');
 });
+
+controller.get('/page', function (req, res, next) {
+  res.render('page');
+});

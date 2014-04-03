@@ -22,6 +22,18 @@ describe('basic test', function () {
       assert.equal(res.statusCode, 200);
       assert(res.headers['content-type'].match(/text\/html/));
       assert(res.body.indexOf('<h1>Example Site</h1>') > 0);
+      assert(res.body.indexOf('<h2>Home</h2>') > 0);
+      done();
+    });
+  });
+
+  it('GET /page from second template dir', function (done) {
+    request('http://localhost:3000/page', function (err, res, body) {
+      assert.ifError(err);
+      assert.equal(res.statusCode, 200);
+      assert(res.headers['content-type'].match(/text\/html/));
+      assert(res.body.indexOf('<h1>Example Site</h1>') > 0);
+      assert(res.body.indexOf('<h2>Page</h2>') > 0);
       done();
     });
   });
