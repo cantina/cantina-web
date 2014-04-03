@@ -4,15 +4,15 @@ var app = require('cantina');
 app.load('plugins', __dirname);
 app.load('plugins');
 
+// Load the app views.
+app.loadViews('views');
+
+// Load the app static files.
+app.loadStatic('public');
+
 // Load local and app middleware.
 app.loadMiddleware('middleware', __dirname);
 app.loadMiddleware('middleware');
 
 // Load the app controllers.
 app.loadControllers('controllers');
-
-// Load the app views.
-app.loadViews('views');
-
-// Load the app static files.
-app.loadStatic('public');

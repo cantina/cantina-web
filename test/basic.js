@@ -47,4 +47,14 @@ describe('basic test', function () {
       done();
     });
   });
+
+  it('GET a 404', function (done) {
+    request('http://localhost:3000/notarealurl', function (err, res, body) {
+      assert.ifError(err);
+      assert.equal(res.statusCode, 404);
+      assert(res.headers['content-type'].match(/text\/html/));
+      assert(res.body.indexOf('<h2>Oops! Page Not Found</h2>') >= 0);
+      done();
+    });
+  });
 });

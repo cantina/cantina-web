@@ -8,8 +8,8 @@ require('../plugins/static');
 conf = app.conf.get('web:static');
 
 // Export middleware.
-if (conf.notFound) {
-  module.exports = app.staticHandler.notFound;
+if (conf.notFound && app.staticNotFoundHandler) {
+  module.exports = app.staticNotFoundHandler;
   module.exports.weight = 1000;
 }
 else {
