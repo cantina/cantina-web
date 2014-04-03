@@ -11,7 +11,8 @@
     "pause": "0.0.1",
     "href": "~0.1.1",
     "formidable": "~1.0.14",
-    "qs": "~0.6.5"
+    "qs": "~0.6.5",
+    "stac": "~0.0.12"
   },
   "devDependencies": {
     "mocha": "*",
