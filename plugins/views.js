@@ -8,27 +8,14 @@ var app = require('cantina')
 // Expose Handlebars
 app.Handlebars = templMulti.handlebars;
 
-// Default conf.
-app.conf.add({
-  web: {
-    views: {
-      root: './views'
-    }
+// Load a directory of views.
+app.loadViews = function (dir, cwd, weight) {
+  cwd = cwd || app.root;
+  dir = path.resolve(cwd, dir);
+  if (fs.existsSync(dir)) {
+    templMulti.addDir(dir, weight);
   }
-});
-
-// Get conf.
-conf = app.conf.get('web:views');
-
-app.loadViews = function (dir, weight) {
-  templMulti.addDir(dir, weight);
 };
 
 // Expose middleware.
-if (conf) {
-  root = path.resolve(app.root, conf.root);
-  if (fs.existsSync(root)) {
-    app.loadViews(root);
-  }
-  app.viewsHandler = templMulti.middleware;
-}
+app.viewsHandler = templMulti.middleware;

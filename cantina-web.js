@@ -10,3 +10,6 @@ app.loadMiddleware('middleware');
 
 // Load the app controllers.
 app.loadControllers('controllers');
+
+// Load the app views.
+app.loadViews('views');

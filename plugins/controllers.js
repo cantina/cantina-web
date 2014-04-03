@@ -5,16 +5,10 @@ var app = require('cantina')
 // Depends on middleware plugin.
 require('../plugins/middleware');
 
-app.conf.add({
-  web: {
-    controllers: {
-      path: 'controllers'
-    }
-  }
-});
-
+// Expose middler as 'controller'.
 app.controller = app.middler;
 
+// Load a directory of controllers.
 app.loadControllers = function (dir, cwd) {
   var controllers = app.load(dir, cwd);
   Object.keys(controllers).forEach(function (name) {
