@@ -2,7 +2,10 @@ var app = require('cantina')
   , path = require('path')
   , fs = require('fs')
   , conf
-  , root;
+  , staticMiddleware;
+
+// Depends on middleware plugin.
+require('../plugins/middleware');
 
 // Require and expose buffet.
 app.buffet = require('buffet');
@@ -11,8 +14,6 @@ app.buffet = require('buffet');
 app.conf.add({
   web: {
     static: {
-      root: './public',
-      notFound: false,
       buffet: {
         indexes: true,
         index: 'index.html',
@@ -29,10 +30,15 @@ app.conf.add({
 // Get static config.
 conf = app.conf.get('web:static');
 
-// Create middleware.
-if (conf) {
-  root = path.resolve(app.root, conf.root);
-  if (fs.existsSync(root)) {
-    app.staticHandler = app.buffet(root, conf.buffet);
+// Create and expose middleware.
+staticMiddleware = app.middler();
+app.staticHandler = staticMiddleware.handler;
+
+// 'Load' a directory of static files and add it to the middleware chain.
+app.loadStatic = function (dir, cwd, weight) {
+  cwd = cwd || app.root;
+  dir = path.resolve(cwd, dir);
+  if (fs.existsSync(dir)) {
+    staticMiddleware.add(weight || 0, app.buffet(dir, conf.buffet));
   }
-}
+};

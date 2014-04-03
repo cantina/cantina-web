@@ -8,6 +8,9 @@ var app = require('cantina')
 // Expose Handlebars
 app.Handlebars = templMulti.handlebars;
 
+// Expose middleware.
+app.viewsHandler = templMulti.middleware;
+
 // Load a directory of views.
 app.loadViews = function (dir, cwd, weight) {
   cwd = cwd || app.root;
@@ -16,6 +19,3 @@ app.loadViews = function (dir, cwd, weight) {
     templMulti.addDir(dir, weight);
   }
 };
-
-// Expose middleware.
-app.viewsHandler = templMulti.middleware;

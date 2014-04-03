@@ -13,3 +13,6 @@ app.loadControllers('controllers');
 
 // Load the app views.
 app.loadViews('views');
+
+// Load the app static files.
+app.loadStatic('public');
