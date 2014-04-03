@@ -2,6 +2,7 @@ var templ = require('templ')
   , path = require('path')
   , templStac = require('stac')();
 
+exports.handlebars = templ.handlebars;
 
 exports.addDir = function (dir, weight) {
   var newTempl = templ(dir);

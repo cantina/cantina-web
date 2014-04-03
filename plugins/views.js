@@ -6,7 +6,7 @@ var app = require('cantina')
   , root;
 
 // Expose Handlebars
-app.Handlebars = require('templ').handlebars;
+app.Handlebars = templMulti.handlebars;
 
 // Default conf.
 app.conf.add({
