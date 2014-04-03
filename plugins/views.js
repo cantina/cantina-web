@@ -1,11 +1,12 @@
 var app = require('cantina')
   , path = require('path')
   , fs = require('fs')
+  , templMulti = require('./templ-multi')
   , conf
   , root;
 
-// Expose templ.
-app.templ = require('templ');
+// Expose Handlebars
+app.Handlebars = require('templ').handlebars;
 
 // Default conf.
 app.conf.add({
@@ -23,6 +24,11 @@ conf = app.conf.get('web:views');
 if (conf) {
   root = path.resolve(app.root, conf.root);
   if (fs.existsSync(root)) {
-    app.viewsHandler = app.templ(root);
+    templMulti.addDir(root);
   }
+  app.viewsHandler = templMulti.middleware;
 }
+
+app.loadTemplates = function (dir, weight) {
+  templMulti.addDir(dir, weight);
+};
