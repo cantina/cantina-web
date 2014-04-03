@@ -1,6 +1,4 @@
-var app = require('cantina')
-  , path = require('path')
-  , conf;
+var app = require('cantina');
 
 // Depends on middleware plugin.
 require('../plugins/middleware');
