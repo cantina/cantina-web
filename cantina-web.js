@@ -9,4 +9,4 @@ app.loadMiddleware('middleware', __dirname);
 app.loadMiddleware('middleware');
 
 // Load the app controllers.
-app.loadControllers();
+app.loadControllers('controllers');
