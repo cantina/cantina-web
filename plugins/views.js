@@ -29,6 +29,6 @@ if (conf) {
   app.viewsHandler = templMulti.middleware;
 }
 
-app.loadTemplates = function (dir, weight) {
+app.loadViews = function (dir, weight) {
   templMulti.addDir(dir, weight);
 };

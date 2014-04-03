@@ -6,7 +6,7 @@ app.boot(function (err) {
   // require('cantina-web');
   require('../');
 
-  app.loadTemplates(app.root + '/extraViews');
+  app.loadViews(app.root + '/extraViews');
 
   app.start();
 });
