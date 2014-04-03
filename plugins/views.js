@@ -1,7 +1,7 @@
 var app = require('cantina')
   , path = require('path')
   , fs = require('fs')
-  , templMulti = require('./templ-multi')
+  , templMulti = require('../lib/templ-multi')
   , conf
   , root;
 
