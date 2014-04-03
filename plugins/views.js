@@ -20,15 +20,15 @@ app.conf.add({
 // Get conf.
 conf = app.conf.get('web:views');
 
+app.loadViews = function (dir, weight) {
+  templMulti.addDir(dir, weight);
+};
+
 // Expose middleware.
 if (conf) {
   root = path.resolve(app.root, conf.root);
   if (fs.existsSync(root)) {
-    templMulti.addDir(root);
+    app.loadViews(root);
   }
   app.viewsHandler = templMulti.middleware;
 }
-
-app.loadViews = function (dir, weight) {
-  templMulti.addDir(dir, weight);
-};
