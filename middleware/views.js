@@ -18,10 +18,10 @@ if (app.viewsHandler) {
       };
 
       // Emit an error and respond to user with a 500.
-      res.renderError = function (err) {
+      res.renderError = function (err, statusCode) {
         app.emit('error', err.stack || err);
-        res.statusCode = 500;
-        res.renderStatus(500, res.vars);
+        res.statusCode = statusCode || 500;
+        res.renderStatus(res.statusCode, res.vars);
       };
 
       next();
