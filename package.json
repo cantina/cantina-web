@@ -1,6 +1,6 @@
 {
   "name": "cantina-web",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "A stack of cantina plugins that sets up a ready-to-go web application.",
   "main": "cantina-web.js",
   "dependencies": {
