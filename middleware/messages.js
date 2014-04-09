@@ -2,7 +2,6 @@ var app = require('cantina');
 
 module.exports = function (req, res, next) {
 
-
   // Set messages on the response.
   res.setMessage = function(message, type) {
     type = type || 'warning';
