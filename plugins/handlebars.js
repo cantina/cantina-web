@@ -1,6 +1,5 @@
 var app = require('cantina')
-  , moment = require('moment')
-  , _ = require('underscore');
+  , moment = require('moment');
 
 require('./views');
 
