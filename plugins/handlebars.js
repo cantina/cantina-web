@@ -1,5 +1,4 @@
-var app = require('cantina')
-  , moment = require('moment');
+var app = require('cantina');
 
 require('./views');
 
@@ -86,21 +85,4 @@ app.Handlebars.registerHelper('pluralize', function (array, singular, plural) {
     return singular;
   }
   return plural;
-});
-
-// Handlebars moment helpers.
-app.Handlebars.registerHelper('moment', function (timestamp, format) {
-  return moment.utc(timestamp).local().format(format);
-});
-app.Handlebars.registerHelper('fromNow', function (timestamp, forceadjust) {
-  // Optionally ensure that the timestamp is not in the future.
-  // We use this when posting new comments to avoid the situation where the
-  // user's system clock is lagging the server's clock, which results in
-  // moment#fromNow() reports "in a few seconds", which is confusing and idiotic.
-  // Instead, if the server timestamp is "in the future", we just set it to the
-  // current time.
-  if (forceadjust && moment.utc(timestamp).diff() > 0) {
-    timestamp = moment.utc().format('YYYY-MM-DD HH:mm:ss');
-  }
-  return new app.Handlebars.SafeString('<span class="fromNow" data-timestamp="' + timestamp + '">' + moment.utc(timestamp).fromNow() + '</span>');
 });
