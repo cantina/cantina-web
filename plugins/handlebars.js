@@ -41,6 +41,32 @@ app.Handlebars.registerHelper('isnt', function (context, options) {
   return options.inverse(this);
 });
 
+app.Handlebars.registerHelper('or', function (var1, var2, options) {
+  if (var1 || var2) {
+    return options.fn(this);
+  }
+  else {
+    return options.inverse(this);
+  }
+});
+
+app.Handlebars.registerHelper('and', function (var1, var2, options) {
+  if (var1 && var2) {
+    return options.fn(this);
+  }
+  else {
+    return options.inverse(this);
+  }
+});
+
+app.Handlebars.registerHelper('nor', function (var1, var2, options) {
+  if (!(var1 || var2)) {
+    return options.fn(this);
+  }
+  else {
+    return options.inverse(this);
+  }
+});
 
 // Handlebars length helper.
 app.Handlebars.registerHelper('length', function (array) {
@@ -74,31 +100,4 @@ app.Handlebars.registerHelper('fromNow', function (timestamp, forceadjust) {
     timestamp = moment.utc().format('YYYY-MM-DD HH:mm:ss');
   }
   return new app.Handlebars.SafeString('<span class="fromNow" data-timestamp="' + timestamp + '">' + moment.utc(timestamp).fromNow() + '</span>');
-});
-
-app.Handlebars.registerHelper('or', function (var1, var2, options) {
-  if (var1 || var2) {
-    return options.fn(this);
-  }
-  else {
-    return options.inverse(this);
-  }
-});
-
-app.Handlebars.registerHelper('and', function (var1, var2, options) {
-  if (var1 && var2) {
-    return options.fn(this);
-  }
-  else {
-    return options.inverse(this);
-  }
-});
-
-app.Handlebars.registerHelper('nor', function (var1, var2, options) {
-  if (!(var1 || var2)) {
-    return options.fn(this);
-  }
-  else {
-    return options.inverse(this);
-  }
 });
