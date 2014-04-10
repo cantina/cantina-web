@@ -41,35 +41,6 @@ app.Handlebars.registerHelper('isnt', function (context, options) {
   return options.inverse(this);
 });
 
-// first helper.
-app.Handlebars.registerHelper('first', function (context, options) {
-  if (options.data.index === 0) {
-    return options.fn(this);
-  }
-  else {
-    return options.inverse(this);
-  }
-});
-
-// notfirst helper.
-app.Handlebars.registerHelper('notfirst', function (context, options) {
-  if (options.data.index === 0) {
-    return options.inverse(this);
-  }
-  else {
-    return options.fn(this);
-  }
-});
-
-// Repeat N times.
-app.Handlebars.registerHelper('repeat', function (num, options) {
-  var content = '';
-  for (var i = 0; i < num; i++) {
-    this.index = i;
-    content += options.fn(this);
-  }
-  return content;
-});
 
 // Handlebars length helper.
 app.Handlebars.registerHelper('length', function (array) {
