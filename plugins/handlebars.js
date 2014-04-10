@@ -79,7 +79,11 @@ app.Handlebars.registerHelper('length', function (array) {
 app.Handlebars.registerHelper('pluralize', function (array, singular, plural) {
   if ('string' !== typeof singular) singular = '';
   if ('string' !== typeof plural) plural = 's';
-  if (array.length && array.length === 1) {
+  var n = array;
+  if (typeof array.length !== 'undefined') {
+    n = array.length;
+  }
+  if (n && n === 1) {
     return singular;
   }
   return plural;
