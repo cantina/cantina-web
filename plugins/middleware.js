@@ -11,12 +11,12 @@ app.middler = require('middler');
 app.middleware = app.middler(app.server);
 
 // Load middleware from a folder and add it.
-app.loadMiddleware = function (dir, cwd) {
-  var handlers = app.load(dir, cwd);
+app.loader('middleware', function (options) {
+  var handlers = app.load('modules', options);
   Object.keys(handlers).forEach(function (name) {
     var middleware = handlers[name];
     if (middleware) {
       app.middleware.add(middleware.weight || 0, middleware.handler || middleware);
     }
   });
-};
+});

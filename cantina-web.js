@@ -1,18 +1,19 @@
-var app = require('cantina');
+var app = require('cantina')
+  , _ = require('underscore');
 
-// Load local and app plugins.
-app.load('plugins', __dirname);
+// Load the plugins.
 app.load('plugins');
 
-// Load the app views.
-app.loadViews('views');
+/**
+ * Register a 'web' helper loader.
+ */
+app.loader('web', function (options) {
+  app.load('plugins', _.extend({}, options, {dir: 'plugins'}));
+  app.load('views', _.extend({}, options, {dir: 'views'}));
+  app.load('static', _.extend({}, options, {dir: 'public'}));
+  app.load('middleware', _.extend({}, options, {dir: 'middleware'}));
+  app.load('controllers', _.extend({}, options, {dir: 'controllers'}));
+});
 
-// Load the app static files.
-app.loadStatic('public');
-
-// Load local and app middleware.
-app.loadMiddleware('middleware', __dirname);
-app.loadMiddleware('middleware');
-
-// Load the app controllers.
-app.loadControllers('controllers');
+// Load stuff provided by cantina-web.
+app.load('web');

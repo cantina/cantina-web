@@ -8,7 +8,8 @@ describe('basic test', function () {
     });
     proc.stdout.on('data', function (data) {
       assert.equal(data.toString(), 'Listening on 0.0.0.0:3000\n');
-      done();
+      // @todo Not sure why delay needed.
+      setTimeout(done, 10);
     });
   });
 

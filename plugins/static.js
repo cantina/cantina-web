@@ -36,17 +36,13 @@ staticMiddleware = app.middler();
 app.staticHandler = staticMiddleware.handler;
 
 // 'Load' a directory of static files and add it to the middleware chain.
-app.loadStatic = function (dir, cwd, weight) {
+app.loader('static', function (options) {
   var buffet;
-
-  cwd = cwd || app.root;
-  dir = path.resolve(cwd, dir);
-
-  if (fs.existsSync(dir)) {
-    buffet = app.buffet(dir, conf.buffet);
-    staticMiddleware.add(weight || 0, buffet);
-    if (cwd === app.root) {
+  if (fs.existsSync(options.path)) {
+    buffet = app.buffet(options.path, conf.buffet);
+    staticMiddleware.add(options.weight || 0, buffet);
+    if (options.parent === app.root) {
       app.staticNotFoundHandler = buffet.notFound;
     }
   }
-};
+});

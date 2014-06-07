@@ -2,6 +2,7 @@ var app = require('cantina');
 
 require('./views');
 
+// applyPartial helper.
 app.Handlebars.registerHelper('applyPartial', function (templateName, vars, options) {
   if (arguments.length < 3) {
     options = vars;
@@ -13,7 +14,6 @@ app.Handlebars.registerHelper('applyPartial', function (templateName, vars, opti
   }
   return template(vars || this);
 });
-
 
 // is block helper.
 app.Handlebars.registerHelper('is', function (context, options) {

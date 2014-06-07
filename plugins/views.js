@@ -12,10 +12,8 @@ app.Handlebars = templMulti.handlebars;
 app.viewsHandler = templMulti.middleware;
 
 // Load a directory of views.
-app.loadViews = function (dir, cwd, weight) {
-  cwd = cwd || app.root;
-  dir = path.resolve(cwd, dir);
-  if (fs.existsSync(dir)) {
-    templMulti.addDir(dir, weight);
+app.loader('views', function (options) {
+  if (fs.existsSync(options.path)) {
+    templMulti.addDir(options.path, options.weight || 0);
   }
-};
+});

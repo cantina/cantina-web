@@ -6,5 +6,8 @@ app.boot(function (err) {
   // require('cantina-web');
   require('../../../');
 
+  // Load the web stack.
+  app.load('web');
+
   app.start();
 });

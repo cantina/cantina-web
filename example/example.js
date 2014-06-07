@@ -6,7 +6,11 @@ app.boot(function (err) {
   // require('cantina-web');
   require('../');
 
-  app.loadViews(app.root + '/extraViews');
+  // Load the web stack.
+  app.load('web');
+
+  // Load extra views directory.
+  app.load('views', {dir: 'extraViews'});
 
   app.start();
 });

@@ -1,26 +1,30 @@
 {
   "name": "cantina-web",
-  "version": "3.2.5",
   "description": "A stack of cantina plugins that sets up a ready-to-go web application.",
+  "version": "4.0.0-dev",
+  "publishConfig": {
+    "registry": "https://npm-registry.terraeclipse.com"
+  },
   "main": "cantina-web.js",
   "dependencies": {
-    "buffet": "~0.6.0",
+    "buffet": "~1.0.2",
     "middler": "~0.7.1",
     "expres": "0.0.5",
-    "templ": "~0.1.5",
+    "templ": "~0.1.8",
     "pause": "0.0.1",
     "href": "~0.1.1",
     "formidable": "~1.0.14",
-    "qs": "~0.6.5",
-    "stac": "~0.0.12"
+    "qs": "~0.6.6",
+    "stac": "~0.0.12",
+    "underscore": "^1.6.0"
   },
   "devDependencies": {
     "mocha": "*",
-    "request": "~2.25.0",
-    "cantina": "~3.1.2"
+    "request": "~2.36.0",
+    "cantina": "~4.0.0"
   },
   "peerDependencies": {
-    "cantina": "~3.1.2"
+    "cantina": "~4.0.0"
   },
   "scripts": {
     "test": "make test"
@@ -28,9 +32,6 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/cantina/cantina-web.git"
-  },
-  "publishConfig": {
-    "registry": "https://npm-registry.terraeclipse.com"
   },
   "homepage": "https://github.com/cantina/cantina-web",
   "keywords": [
