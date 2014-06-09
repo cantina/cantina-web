@@ -14,6 +14,7 @@ app.buffet = require('buffet');
 app.conf.add({
   web: {
     static: {
+      dir: 'public',
       notFound: false,
       buffet: {
         indexes: true,
@@ -36,7 +37,7 @@ staticMiddleware = app.middler();
 app.staticHandler = staticMiddleware.handler;
 
 // 'Load' a directory of static files and add it to the middleware chain.
-app.loader('static', function (options) {
+app.loader('static', {dir: conf.dir}, function (options) {
   var buffet;
   if (fs.existsSync(options.path)) {
     buffet = app.buffet(options.path, conf.buffet);

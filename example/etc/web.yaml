@@ -1,2 +1,2 @@
 static:
-  root: './public'
+  dir: 'html'
