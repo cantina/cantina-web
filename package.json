@@ -17,12 +17,12 @@
     "qs": "~0.6.6",
     "stac": "~0.0.12"
   },
+  "peerDependencies": {
+    "cantina": "~4.0.0"
+  },
   "devDependencies": {
     "mocha": "*",
     "request": "~2.36.0",
-    "cantina": "~4.0.0"
-  },
-  "peerDependencies": {
     "cantina": "~4.0.0"
   },
   "scripts": {
@@ -37,7 +37,6 @@
     "cantina"
   ],
   "author": "Brian Link <cpsubrian@gmail.com>",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/cantina/cantina-web/issues"
   }
