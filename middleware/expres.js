@@ -1,4 +1,6 @@
 var expres = require('expres');
 
-module.exports = expres.middleware;
-module.exports.weight = -900;
+module.exports = function (app) {
+  expres.middleware.weight = -900;
+  return expres.middleware;
+};

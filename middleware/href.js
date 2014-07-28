@@ -1,2 +1,5 @@
-module.exports = require('href');
-module.exports.weight = -950;
+module.exports = function (app) {
+  hrefMiddleware = require('href');
+  hrefMiddleware.weight = -950;
+  return hrefMiddleware;
+};

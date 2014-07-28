@@ -1,7 +1,11 @@
-console.log('controller');
-var app = require('cantina')
-  , controller = module.exports = app.controller();
+module.exports = function (app) {
+  console.log('controller');
 
-controller.get('/', function (req, res, next) {
-  res.send('Home');
-});
+  var controller = app.controller();
+
+  controller.get('/', function (req, res, next) {
+    res.send('Home');
+  });
+
+  return controller;
+};

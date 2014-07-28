@@ -1,17 +1,18 @@
-var app = require('cantina')
-  , conf;
+module.exports = function (app) {
+  var conf
+    , handler = null;
 
-// Depends on static plugin.
-require('../plugins/static');
+  // Depends on static plugin.
+  app.require('../plugins/static');
 
-// Load conf.
-conf = app.conf.get('web:static');
+  // Load conf.
+  conf = app.conf.get('web:static');
 
-// Export middleware.
-if (conf.notFound && app.staticNotFoundHandler) {
-  module.exports = app.staticNotFoundHandler;
-  module.exports.weight = 1000;
-}
-else {
-  module.exports = null;
-}
+  // Export middleware.
+  if (conf.notFound && app.staticNotFoundHandler) {
+    handler = app.staticNotFoundHandler;
+    handler.weight = 1000;
+  }
+
+  return handler;
+};

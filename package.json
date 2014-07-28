@@ -23,7 +23,7 @@
   "devDependencies": {
     "mocha": "*",
     "request": "~2.36.0",
-    "cantina": "~4.0.0"
+    "cantina": "cantina/cantina#4.x-scoped"
   },
   "scripts": {
     "test": "make test"
