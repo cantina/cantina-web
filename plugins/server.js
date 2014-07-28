@@ -1,6 +1,8 @@
 var http = require('http');
 
 module.exports = function (app) {
+  var conf;
+
   // Default conf.
   app.conf.add({
     web: {
@@ -9,14 +11,15 @@ module.exports = function (app) {
       }
     }
   });
+  conf = app.conf.get('web:server');
 
   // Create server.
-  if (!app.server) {
+  if (!app.server && !!conf) {
     app.server = http.createServer();
 
     // When the app starts, start listening.
     app.hook('start').last(1000, function (next) {
-      var conf = app.conf.get('web:server');
+
       if (!app.server.address() && (typeof conf.port !== 'undefined') && (typeof conf.listen === 'undefined' || conf.listen)) {
         app.server.listen(conf.port, function () {
           var address = app.server.address();

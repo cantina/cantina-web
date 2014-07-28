@@ -1,14 +1,11 @@
 var path = require('path');
 
 module.exports = function (app) {
-  // Depends on server plugin.
-  app.require('./server');
-
   // Require and expose middler.
   app.middler = require('middler');
 
   // Add middleware api to app.
-  app.middleware = app.middler(app.server);
+  app.middleware = app.middler();
 
   // Load middleware from a folder and add it.
   app.loader('middleware', function (options) {
@@ -20,5 +17,13 @@ module.exports = function (app) {
       }
     });
     return handlers;
+  });
+
+  // Attach to server on start.
+  app.hook('start').add(function (next) {
+    if (app.server) {
+      app.middleware.attach(app.server);
+    }
+    next();
   });
 };
