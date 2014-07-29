@@ -18,12 +18,12 @@
     "stac": "~0.0.12"
   },
   "peerDependencies": {
-    "cantina": "~4.0.0"
+    "cantina": "~4.1.0"
   },
   "devDependencies": {
     "mocha": "*",
     "request": "~2.36.0",
-    "cantina": "cantina/cantina#4.x-scoped"
+    "cantina": "~4.1.0"
   },
   "scripts": {
     "test": "make test"
