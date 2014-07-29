@@ -19,7 +19,6 @@ module.exports = function (app) {
 
     // When the app starts, start listening.
     app.hook('start').last(1000, function (next) {
-
       if (!app.server.address() && (typeof conf.port !== 'undefined') && (typeof conf.listen === 'undefined' || conf.listen)) {
         app.server.listen(conf.port, function () {
           var address = app.server.address();
@@ -39,3 +38,5 @@ module.exports = function (app) {
     });
   }
 };
+
+module.exports.weight = -500;

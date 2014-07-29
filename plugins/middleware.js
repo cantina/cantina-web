@@ -19,11 +19,8 @@ module.exports = function (app) {
     return handlers;
   });
 
-  // Attach to server on start.
-  app.hook('start').add(function (next) {
-    if (app.server) {
-      app.middleware.attach(app.server);
-    }
-    next();
-  });
+  // Attach to server.
+  if (app.server) {
+    app.middleware.attach(app.server);
+  }
 };
