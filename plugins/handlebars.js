@@ -1,17 +1,14 @@
 module.exports = function (app) {
-  // Depends on the views plugin.
-  app.require('./views');
-
-  // Handlebars instance is not available until app startup.
-  app.hook('start').add(function (next) {
+  // Bind our custom helpers to handlebars instances.
+  app.on('handlebars', function (Handlebars) {
 
     // applyPartial helper.
-    app.Handlebars.registerHelper('applyPartial', function (templateName, vars, options) {
+    Handlebars.registerHelper('applyPartial', function (templateName, vars, options) {
       if (arguments.length < 3) {
         options = vars;
         vars = null;
       }
-      var template = app.Handlebars.partials[templateName];
+      var template = Handlebars.partials[templateName];
       if (!template) {
         throw new Error('Handlebars partial ' + templateName + ' could not be found.');
       }
@@ -19,7 +16,7 @@ module.exports = function (app) {
     });
 
     // is block helper.
-    app.Handlebars.registerHelper('is', function (context, options) {
+    Handlebars.registerHelper('is', function (context, options) {
       if (typeof options.hash !== 'undefined') {
         if (typeof options.hash.equal !== 'undefined') {
           if (context === options.hash.equal) {
@@ -31,7 +28,7 @@ module.exports = function (app) {
     });
 
     // isnt block helper.
-    app.Handlebars.registerHelper('isnt', function (context, options) {
+    Handlebars.registerHelper('isnt', function (context, options) {
       if (typeof options.hash !== 'undefined') {
         if (typeof options.hash.equal !== 'undefined') {
           if (context !== options.hash.equal) {
@@ -42,7 +39,7 @@ module.exports = function (app) {
       return options.inverse(this);
     });
 
-    app.Handlebars.registerHelper('or', function (var1, var2, options) {
+    Handlebars.registerHelper('or', function (var1, var2, options) {
       if (var1 || var2) {
         return options.fn(this);
       }
@@ -51,7 +48,7 @@ module.exports = function (app) {
       }
     });
 
-    app.Handlebars.registerHelper('and', function (var1, var2, options) {
+    Handlebars.registerHelper('and', function (var1, var2, options) {
       if (var1 && var2) {
         return options.fn(this);
       }
@@ -60,7 +57,7 @@ module.exports = function (app) {
       }
     });
 
-    app.Handlebars.registerHelper('nor', function (var1, var2, options) {
+    Handlebars.registerHelper('nor', function (var1, var2, options) {
       if (!(var1 || var2)) {
         return options.fn(this);
       }
@@ -70,14 +67,14 @@ module.exports = function (app) {
     });
 
     // Handlebars length helper.
-    app.Handlebars.registerHelper('length', function (array) {
+    Handlebars.registerHelper('length', function (array) {
       return array ? array.length : 'N/A';
     });
 
     // If return singular form if array length equals 1
     // else return plural
     // If forms are not passed, just return "s" for plural
-    app.Handlebars.registerHelper('pluralize', function (array, singular, plural) {
+    Handlebars.registerHelper('pluralize', function (array, singular, plural) {
       if ('string' !== typeof singular) singular = '';
       if ('string' !== typeof plural) plural = 's';
       var n = array;
@@ -89,7 +86,5 @@ module.exports = function (app) {
       }
       return plural;
     });
-
-    next();
   });
 };
