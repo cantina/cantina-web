@@ -10,7 +10,9 @@ module.exports = function (app) {
     var controllers = app.load('modules', options);
     Object.keys(controllers).forEach(function (name) {
       var controller = controllers[name];
-      app.middleware.add(controller.weight || 900, controller.handler);
+      if (controller) {
+        app.middleware.add(controller.weight || 900, controller.handler);
+      }
     });
     return controllers;
   });
