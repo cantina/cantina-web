@@ -14,7 +14,7 @@ module.exports = function (app) {
   conf = app.conf.get('web:server');
 
   // Create server.
-  if (!app.server && !!conf) {
+  if (!app.server && !conf.disabled) {
     app.server = http.createServer();
 
     // When the app starts, start listening.
