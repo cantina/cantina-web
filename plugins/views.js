@@ -1,6 +1,8 @@
 var path = require('path')
   , fs = require('fs')
   , Templ = require('templ').Templ
+  // @todo replace this global reference with per-templ instance reference
+  // once https://github.com/carlos8f/templ/pull/2 lands.
   , Handlebars = require('templ').handlebars;
 
 module.exports = function (app) {
