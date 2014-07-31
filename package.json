@@ -1,7 +1,7 @@
 {
   "name": "cantina-web",
   "description": "A stack of cantina plugins that sets up a ready-to-go web application.",
-  "version": "4.1.3",
+  "version": "4.1.4",
   "publishConfig": {
     "registry": "https://npm-registry.terraeclipse.com"
   },
