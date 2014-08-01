@@ -29,6 +29,12 @@
     "type": "git",
     "url": "git://github.com/cantina/cantina-web.git"
   },
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  ],
   "homepage": "https://github.com/cantina/cantina-web",
   "keywords": [
     "cantina"
