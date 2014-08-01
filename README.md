@@ -18,24 +18,23 @@ Features
     - Form body parsing
     - Express compatibility
     - Controllers pattern
-    - Auto plugin loading
-    - Auto middleware loading
+    - Weighted middleware loader
 
 How to Use
 ==========
 
-Just include the `cantina-web` plugin in your `cantina` application, invoke
+Just load the `cantina-web` plugin into your `cantina` application, invoke
 the 'web' loader, and you'll have a simple, but full web stack at your disposal.
 
 ```js
-var app = require('cantina');
+var app = require('cantina').createApp();
 
 app.boot(function (err) {
   // Handle err.
   if (err) throw err;
 
   // Load cantina-web.
-  require('cantina-web');
+  app.require('cantina-web');
 
   // Load the 'web' stack.
   app.load('web');
@@ -51,6 +50,25 @@ app.boot(function (err) {
   app.start();
 });
 ```
+
+By default, the `web` loader expects your appliation root to be structured like:
+
+```
+ ├─┬ controllers/
+ ├─┬ etc/
+ │ └── conf.yaml
+ ├─┬ middleware/
+ ├── plugins/
+ ├─┬ public/
+ ├─┬ views/
+ │ ├── index.hbs
+ │ ├── layout.hbs
+ │ └── status-404.hbs
+ ├── server.js
+ └── package.json
+```
+
+See the example app for a more customized example.
 
 - - -
 
