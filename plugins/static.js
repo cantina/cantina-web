@@ -3,7 +3,8 @@ var path = require('path')
 
 module.exports = function (app) {
   var conf
-    , staticMiddleware;
+    , staticMiddleware
+    , defaultWeight = 0;
 
   // Depends on middleware plugin.
   app.require('../plugins/middleware');
@@ -42,7 +43,7 @@ module.exports = function (app) {
     var buffet;
     if (fs.existsSync(options.path)) {
       buffet = app.buffet(options.path, conf.buffet);
-      staticMiddleware.add(options.weight || 0, buffet);
+      staticMiddleware.add(options.weight || defaultWeight--, buffet);
       if (options.parent === app.root) {
         app.staticNotFoundHandler = buffet.notFound;
       }
