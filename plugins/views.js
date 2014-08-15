@@ -1,10 +1,13 @@
 var path = require('path')
   , fs = require('fs')
+  , Handlebars = require('handlebars')
   , Templ = require('templ').Templ;
 
 module.exports = function (app) {
-  var specs = []
-    , templOptions = {}; // Might use this later.
+  var specs = [];
+
+  // Attach handlebar to the app.
+  app.handlebars = Handlebars.create();
 
   // 'Load' a directory of views (add it to the templ specs).
   // The specs don't actually get loaded until app start.
@@ -23,12 +26,9 @@ module.exports = function (app) {
     if (app.templ) app.templ.close();
 
     // Create new templ instance.
-    app.templ = new Templ(specs, templOptions);
+    app.templ = new Templ(specs, {handlebars: app.handlebars});
 
     // Views middleware uses this handler.
-    app.templHandler = app.templ.middleware(templOptions);
-
-    // Plugins can listen for this event to bind handlebars heleprs.
-    app.emit('handlebars', app.templ.handlebars);
+    app.templHandler = app.templ.middleware();
   }
 };

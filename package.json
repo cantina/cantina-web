@@ -5,14 +5,15 @@
   "main": "cantina-web.js",
   "dependencies": {
     "buffet": "~1.0.2",
-    "middler": "~0.7.1",
     "expres": "0.0.5",
-    "templ": "~1.4.0",
-    "pause": "0.0.1",
-    "href": "~0.1.1",
     "formidable": "~1.0.14",
+    "handlebars": "^2.0.0-alpha.4",
+    "href": "~0.1.1",
+    "middler": "~0.7.1",
+    "pause": "0.0.1",
     "qs": "~0.6.6",
-    "stac": "~0.0.12"
+    "stac": "~0.0.12",
+    "templ": "~1.4.0"
   },
   "peerDependencies": {
     "cantina": "~4.1.0"
