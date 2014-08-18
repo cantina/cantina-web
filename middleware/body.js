@@ -23,6 +23,6 @@ module.exports = function (app) {
     }
     req.unpause();
   }
-  bodyMiddleware.weight = -900;
+  bodyMiddleware.weight = -850;
   return bodyMiddleware;
 };
